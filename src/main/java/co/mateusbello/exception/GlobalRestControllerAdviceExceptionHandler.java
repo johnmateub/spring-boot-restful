@@ -29,5 +29,12 @@ public class GlobalRestControllerAdviceExceptionHandler extends ResponseEntityEx
 				ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity<>(customErrorDetails, HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(OrderNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	public final CustomErrorDetails orderNotFound(OrderNotFoundException ex) {
+		return new CustomErrorDetails(new Date(), 
+				"From @RestControllerAdvice NOT FOUND", ex.getMessage());
+	}
 
 }
