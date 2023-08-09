@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "USERS")
@@ -14,11 +16,13 @@ public class User {
 	@GeneratedValue
 	private Long id;
 	
+	@NotEmpty(message = "Username is mandatory field. Please provide username")
 	@Column(name = "USER_NAME", length = 50, nullable = false, unique = true)
 	private String username;
 	
+	@Size(min = 2, message = "First name should have at least 2 characters")
 	@Column(name = "FIRST_NAME", length = 50, nullable = false)
-	private String firtsname;
+	private String firstname;
 	
 	@Column(name = "LAST_NAME", length = 50, nullable = false)
 	private String lastname;
@@ -40,7 +44,7 @@ public class User {
 		super();
 		this.id = id;
 		this.username = username;
-		this.firtsname = firtsname;
+		this.firstname = firtsname;
 		this.lastname = lastname;
 		this.email = email;
 		this.role = role;
@@ -63,12 +67,12 @@ public class User {
 		this.username = username;
 	}
 
-	public String getFirtsname() {
-		return firtsname;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirtsname(String firtsname) {
-		this.firtsname = firtsname;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getLastname() {
@@ -105,7 +109,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", firtsname=" + firtsname + ", lastname=" + lastname
+		return "User [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
 				+ ", email=" + email + ", role=" + role + ", ssn=" + ssn + "]";
 	}
 
