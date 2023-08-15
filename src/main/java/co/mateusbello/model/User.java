@@ -2,6 +2,8 @@ package co.mateusbello.model;
 
 import java.util.List;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "USERS")
-public class User {
+public class User extends RepresentationModel<User> {
 	
 	@Id
 	@GeneratedValue

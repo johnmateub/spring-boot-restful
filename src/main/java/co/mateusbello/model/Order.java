@@ -1,5 +1,7 @@
 package co.mateusbello.model;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -11,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ORDERS")
-public class Order {
+public class Order extends RepresentationModel<Order> {
 	
 	@Id
 	@GeneratedValue
