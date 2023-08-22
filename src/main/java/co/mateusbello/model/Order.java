@@ -3,7 +3,9 @@ package co.mateusbello.model;
 import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
+import co.mateusbello.model.view.Views;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -17,8 +19,10 @@ public class Order extends RepresentationModel<Order> {
 	
 	@Id
 	@GeneratedValue
+	@JsonView(Views.Internal.class)
 	private Long orderId;
 	
+	@JsonView(Views.Internal.class)
 	private String description;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
